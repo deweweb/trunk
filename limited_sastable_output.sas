@@ -36,7 +36,7 @@
 /* Test:
 
 %limit_obs(
-    TABLE_IN  = data.EC_AKT_DNM_OE
+    TABLE_IN  = data.dynmicstable_oue
   , TABLE_OUT = work.ttt
   , NUM_OBS   = 3
 )
