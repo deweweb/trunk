@@ -27,9 +27,17 @@
 	data &TABLE_OUT.;
 		set &TABLE_IN(where=(&WHERE_CL.));
 		** only 2 observations will be read from the filtered source table **;
-		if _n_ < &NUM_OBS. then put _all_;
+		if _n_ <= &NUM_OBS. then put _all_;
 		else stop;
 	run;
+
+	proc sql outobs= &NUM_OBS.;
+		CREATE TABLE &TABLE_OUT._sql AS
+			SELECT *
+			FROM &TABLE_IN.
+			WHERE &WHERE_CL.
+		;
+	quit;
 
 %mend;
 
